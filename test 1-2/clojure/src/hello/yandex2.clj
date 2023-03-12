@@ -1,14 +1,17 @@
 (ns hello.yandex2)
 
 (defn in-count [acc v]
+  {:pre [(coll? acc) (coll? v)]}
   (if (empty? acc) (list v) (if (= (first (last acc)) (first v))
                               (conj (vec (drop-last acc)) (list (first v) (inc (last (last acc)))))
                               (conj (vec acc) (list (first v) 1)))))
 
 (defn squash-it [v-seq]
+  {:pre [(coll? v-seq)]}
   (apply str (map (fn [a] (apply str (str (first a)) (if (> (last a) 1) (str (last a)) ""))) v-seq)))
 
 (defn cache-it [s]
+  {:pre [(string? s)]}
   (let [
         init-chars-counter (fn [ca-charr] (map #(list % 1) ca-charr))
         reduce-char-counters (fn [char-counter] (reduce in-count [] char-counter))
