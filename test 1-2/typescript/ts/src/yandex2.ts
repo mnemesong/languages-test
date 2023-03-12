@@ -1,7 +1,7 @@
 export {};
 
 const main = () => {
-    const str = "AAAABBBCCCDXYZAABBB"
+    const str = "AAABBBCCXYZDDDDAAAABB"
     console.log(hashStr(str))
 }
 
@@ -11,7 +11,7 @@ type Counter = {
     d: number,
 }
 
-const hashStr = 
+export const hashStr = 
     ( str: string ): string =>
         str.split('')
             .map( (el, i) => {return {el: el, i: i + 1}} )

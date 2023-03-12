@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.hashStr = void 0;
 var main = function () {
-    var str = "AAAABBBCCCDXYZAABBB";
-    console.log(hashStr(str));
+    var str = "AAABBBCCXYZDDDDAAAABB";
+    console.log((0, exports.hashStr)(str));
 };
 var hashStr = function (str) {
     return str.split('')
@@ -16,4 +17,5 @@ var hashStr = function (str) {
         .map(function (n) { return n.el.concat((n.d > 1) ? n.d.toString() : ""); })
         .reduce(function (aggr, str) { return aggr.concat(str); });
 };
+exports.hashStr = hashStr;
 main();
