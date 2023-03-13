@@ -1,0 +1,13 @@
+{
+  "name": "yandex",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "repl": "shadow-cljs node-repl",
+    "shadow-cljs":"shadow-cljs"
+  },
+  "devDependencies": {
+    "shadow-cljs": "2.22.2"
+  },
+  "dependencies": {}
+}
