@@ -7,11 +7,19 @@ o Yandex1.test-YandexTasks.cmi : cp ..\bs\rs\test\Yandex1.test-YandexTasks.cmi
 o Yandex1.test-YandexTasks.cmj : cp ..\bs\rs\test\Yandex1.test-YandexTasks.cmj
 o Yandex1.test-YandexTasks.cmt : cp ..\bs\rs\test\Yandex1.test-YandexTasks.cmt
 o Yandex1.test.res : cp ..\..\rs\test\Yandex1.test.res
+o Yandex2.test-YandexTasks.cmi : cp ..\bs\rs\test\Yandex2.test-YandexTasks.cmi
+o Yandex2.test-YandexTasks.cmj : cp ..\bs\rs\test\Yandex2.test-YandexTasks.cmj
+o Yandex2.test-YandexTasks.cmt : cp ..\bs\rs\test\Yandex2.test-YandexTasks.cmt
+o Yandex2.test.res : cp ..\..\rs\test\Yandex2.test.res
 o Yandex1-YandexTasks.cmi : cp ..\bs\rs\src\Yandex1-YandexTasks.cmi
 o Yandex1-YandexTasks.cmj : cp ..\bs\rs\src\Yandex1-YandexTasks.cmj
 o Yandex1-YandexTasks.cmt : cp ..\bs\rs\src\Yandex1-YandexTasks.cmt
 o Yandex1.res : cp ..\..\rs\src\Yandex1.res
+o Yandex2-YandexTasks.cmi : cp ..\bs\rs\src\Yandex2-YandexTasks.cmi
+o Yandex2-YandexTasks.cmj : cp ..\bs\rs\src\Yandex2-YandexTasks.cmj
+o Yandex2-YandexTasks.cmt : cp ..\bs\rs\src\Yandex2-YandexTasks.cmt
+o Yandex2.res : cp ..\..\rs\src\Yandex2.res
 o YandexTasks.cmi : cp ..\bs\YandexTasks.cmi
 o YandexTasks.cmj : cp ..\bs\YandexTasks.cmj
 o YandexTasks.cmt : cp ..\bs\YandexTasks.cmt
-build install.stamp : touch Yandex1.test-YandexTasks.cmi Yandex1.test-YandexTasks.cmj Yandex1-YandexTasks.cmi Yandex1-YandexTasks.cmj YandexTasks.cmi YandexTasks.cmj
+build install.stamp : touch Yandex1.test-YandexTasks.cmi Yandex1.test-YandexTasks.cmj Yandex2.test-YandexTasks.cmi Yandex2.test-YandexTasks.cmj Yandex1-YandexTasks.cmi Yandex1-YandexTasks.cmj Yandex2-YandexTasks.cmi Yandex2-YandexTasks.cmj YandexTasks.cmi YandexTasks.cmj
