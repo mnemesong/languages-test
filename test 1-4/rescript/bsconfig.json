@@ -3,7 +3,11 @@
     "namespace": true,
     "sources": [
       {
-        "dir": "rs",
+        "dir": "src",
+        "subdirs": true
+      },
+      {
+        "dir": "test",
         "subdirs": true
       }
     ],

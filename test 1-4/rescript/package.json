@@ -6,7 +6,7 @@
   "scripts": {
     "res:build": "rescript",
     "res:dev": "rescript build -w",
-    "test": "mocha ./lib/js/rs/test/**/*.js"
+    "test": "mocha ./lib/js/test/**/*.js"
   },
   "dependencies": {
     "rescript": "*"
