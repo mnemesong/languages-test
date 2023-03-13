@@ -5,7 +5,7 @@ rule astj
   command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsc.exe"  -bs-v 10.1.3  -absname -bs-ast -o $out $i
 o rs\test\Yandex1.test.ast : astj ..\..\rs\test\Yandex1.test.res
 rule deps
-  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsb_helper.exe" -hash 4b6569afb27e65d5adc03d6dff0827d9 -bs-ns YandexTasks $in
+  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsb_helper.exe" -hash 24507f8ba86e036a94fc1ac7ffaae357 -bs-ns YandexTasks $in
   restat = 1
 o rs\test\Yandex1.test.d : deps rs\test\Yandex1.test.ast
 rule mij
@@ -16,12 +16,18 @@ o rs\test\Yandex1.test-YandexTasks.cmj rs\test\Yandex1.test-YandexTasks.cmi ..\j
 o rs\test\Yandex2.test.ast : astj ..\..\rs\test\Yandex2.test.res
 o rs\test\Yandex2.test.d : deps rs\test\Yandex2.test.ast
 o rs\test\Yandex2.test-YandexTasks.cmj rs\test\Yandex2.test-YandexTasks.cmi ..\js\rs\test\Yandex2.test.bs.js : mij rs\test\Yandex2.test.ast
+o rs\test\Yandex3.test.ast : astj ..\..\rs\test\Yandex3.test.res
+o rs\test\Yandex3.test.d : deps rs\test\Yandex3.test.ast
+o rs\test\Yandex3.test-YandexTasks.cmj rs\test\Yandex3.test-YandexTasks.cmi ..\js\rs\test\Yandex3.test.bs.js : mij rs\test\Yandex3.test.ast
 o rs\src\Yandex1.ast : astj ..\..\rs\src\Yandex1.res
 o rs\src\Yandex1.d : deps rs\src\Yandex1.ast
 o rs\src\Yandex1-YandexTasks.cmj rs\src\Yandex1-YandexTasks.cmi ..\js\rs\src\Yandex1.bs.js : mij rs\src\Yandex1.ast
 o rs\src\Yandex2.ast : astj ..\..\rs\src\Yandex2.res
 o rs\src\Yandex2.d : deps rs\src\Yandex2.ast
 o rs\src\Yandex2-YandexTasks.cmj rs\src\Yandex2-YandexTasks.cmi ..\js\rs\src\Yandex2.bs.js : mij rs\src\Yandex2.ast
+o rs\src\Yandex3.ast : astj ..\..\rs\src\Yandex3.res
+o rs\src\Yandex3.d : deps rs\src\Yandex3.ast
+o rs\src\Yandex3-YandexTasks.cmj rs\src\Yandex3-YandexTasks.cmi ..\js\rs\src\Yandex3.bs.js : mij rs\src\Yandex3.ast
 rule build_package
   command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsc.exe" -w -49 -color always -no-alias-deps  $i
   restat = 1

@@ -6,9 +6,9 @@ var Mocha$RescriptMocha = require("rescript-mocha/lib/js/src/Mocha.bs.js");
 var Yandex1$YandexTasks = require("../src/Yandex1.bs.js");
 var Promise$RescriptMocha = require("rescript-mocha/lib/js/src/Promise.bs.js");
 
-Mocha$RescriptMocha.describe("Yandex1 task methods")(undefined, undefined, undefined, (function (param) {
+Mocha$RescriptMocha.describe("Yandex1")(undefined, undefined, undefined, (function (param) {
         Mocha$RescriptMocha.describe("addIfUniq")(undefined, undefined, undefined, (function (param) {
-                Mocha$RescriptMocha.it("addIfUniq [1, 2, 3] 2 = [1, 2, 3]")(undefined, undefined, undefined, (function (param) {
+                Mocha$RescriptMocha.it("addIfUniq 1")(undefined, undefined, undefined, (function (param) {
                         if (Caml_obj.equal(Yandex1$YandexTasks.addIfUniq([
                                     1,
                                     2,
@@ -30,7 +30,7 @@ Mocha$RescriptMocha.describe("Yandex1 task methods")(undefined, undefined, undef
                               Error: new Error()
                             };
                       }));
-                Mocha$RescriptMocha.it("addIfUniq [1, 2, 3] 4 = [1, 2, 3, 4]")(undefined, undefined, undefined, (function (param) {
+                Mocha$RescriptMocha.it("addIfUniq 2")(undefined, undefined, undefined, (function (param) {
                         if (Caml_obj.equal(Yandex1$YandexTasks.addIfUniq([
                                     1,
                                     2,
@@ -55,7 +55,7 @@ Mocha$RescriptMocha.describe("Yandex1 task methods")(undefined, undefined, undef
                       }));
               }));
         Mocha$RescriptMocha.describe("counter")(undefined, undefined, undefined, (function (param) {
-                Mocha$RescriptMocha.it("counter [1, 2, 2, 3] 2 = 2")(undefined, undefined, undefined, (function (param) {
+                Mocha$RescriptMocha.it("counter 1")(undefined, undefined, undefined, (function (param) {
                         if (Yandex1$YandexTasks.counter([
                                 1,
                                 2,
@@ -76,7 +76,7 @@ Mocha$RescriptMocha.describe("Yandex1 task methods")(undefined, undefined, undef
                       }));
               }));
         Mocha$RescriptMocha.describe("intersectWithDoublicates")(undefined, undefined, undefined, (function (param) {
-                Mocha$RescriptMocha.it("intersectWithDoublicates [1, 2, 3, 2, 0, 2] [5, 1, 2, 7, 3, 2] = [1, 2, 2, 3]")(undefined, undefined, undefined, (function (param) {
+                Mocha$RescriptMocha.it("intersectWithDoublicates 1")(undefined, undefined, undefined, (function (param) {
                         if (Caml_obj.equal(Yandex1$YandexTasks.intersectWithDoublicates([
                                     1,
                                     2,
