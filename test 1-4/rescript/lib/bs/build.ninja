@@ -1,13 +1,22 @@
 rescript = 1
+g_finger := D:\languages-test\test 1-4\rescript\node_modules\rescript-mocha\lib\ocaml\install.stamp
+g_finger := D:\languages-test\test 1-4\rescript\node_modules\rescript-nodejs\lib\ocaml\install.stamp
 rule astj
   command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsc.exe"  -bs-v 10.1.3  -absname -bs-ast -o $out $i
-o rs\index.ast : astj ..\..\rs\index.res
+o rs\test\Yandex1.test.ast : astj ..\..\rs\test\Yandex1.test.res
 rule deps
-  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsb_helper.exe" -hash 8a8b3b9aa4bfb4699fb5f37b209f38b0 $in
+  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsb_helper.exe" -hash 92e536a15121cbdbafeca067a15171c7 -bs-ns YandexTasks $in
   restat = 1
-o rs\index.d : deps rs\index.ast
+o rs\test\Yandex1.test.d : deps rs\test\Yandex1.test.ast
 rule mij
-  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsc.exe" -I rs   -bs-package-name your-project-name -bs-package-output es6:lib\es6\$in_d:.bs.js $i
+  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsc.exe" -bs-ns YandexTasks -I . -I "rs\src" -I "rs\test" -I rs -I "D:\languages-test\test 1-4\rescript\node_modules\rescript-mocha\lib\ocaml" -I "D:\languages-test\test 1-4\rescript\node_modules\rescript-nodejs\lib\ocaml"   -bs-package-name YandexTasks -bs-package-output commonjs:lib\js\$in_d:.bs.js -bs-v $g_finger $i
   dyndep = 1
   restat = 1
-o rs\index.cmj rs\index.cmi ..\es6\rs\index.bs.js : mij rs\index.ast
+o rs\test\Yandex1.test-YandexTasks.cmj rs\test\Yandex1.test-YandexTasks.cmi ..\js\rs\test\Yandex1.test.bs.js : mij rs\test\Yandex1.test.ast
+o rs\src\Yandex1.ast : astj ..\..\rs\src\Yandex1.res
+o rs\src\Yandex1.d : deps rs\src\Yandex1.ast
+o rs\src\Yandex1-YandexTasks.cmj rs\src\Yandex1-YandexTasks.cmi ..\js\rs\src\Yandex1.bs.js : mij rs\src\Yandex1.ast
+rule build_package
+  command = "D:\languages-test\test 1-4\rescript\node_modules\rescript\win32\bsc.exe" -w -49 -color always -no-alias-deps  $i
+  restat = 1
+o YandexTasks.cmi : build_package YandexTasks.mlmap

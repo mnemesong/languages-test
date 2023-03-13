@@ -1,1 +1,1 @@
-{ "dirs" : [ "rs" ] , "pkgs" : [] , "generated" : [] }
+{ "dirs" : [ "rs" , "rs\\test" , "rs\\src" ] , "pkgs" : [ [ "rescript-nodejs" , "D:\\languages-test\\test 1-4\\rescript\\node_modules\\rescript-nodejs" ] , [ "rescript-mocha" , "D:\\languages-test\\test 1-4\\rescript\\node_modules\\rescript-mocha" ] ] , "generated" : [] }

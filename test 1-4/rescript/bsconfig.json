@@ -1,5 +1,6 @@
 {
-    "name": "your-project-name",
+    "name": "YandexTasks",
+    "namespace": true,
     "sources": [
       {
         "dir": "rs",
@@ -8,9 +9,12 @@
     ],
     "package-specs": [
       {
-        "module": "es6"
+        "module": "commonjs"
       }
     ],
     "suffix": ".bs.js",
-    "bs-dependencies": []
+    "bs-dependencies": [
+      "rescript-mocha",
+      "rescript-nodejs"
+    ]
   }

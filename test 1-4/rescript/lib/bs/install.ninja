@@ -3,8 +3,15 @@ rule cp
   command = cmd.exe /C copy /Y $i $out >NUL
 rule touch
  command = cmd.exe /C type nul >>$out & copy $out+,, >NUL
-o index.cmi : cp ..\bs\rs\index.cmi
-o index.cmj : cp ..\bs\rs\index.cmj
-o index.cmt : cp ..\bs\rs\index.cmt
-o index.res : cp ..\..\rs\index.res
-build install.stamp : touch index.cmi index.cmj 
+o Yandex1.test-YandexTasks.cmi : cp ..\bs\rs\test\Yandex1.test-YandexTasks.cmi
+o Yandex1.test-YandexTasks.cmj : cp ..\bs\rs\test\Yandex1.test-YandexTasks.cmj
+o Yandex1.test-YandexTasks.cmt : cp ..\bs\rs\test\Yandex1.test-YandexTasks.cmt
+o Yandex1.test.res : cp ..\..\rs\test\Yandex1.test.res
+o Yandex1-YandexTasks.cmi : cp ..\bs\rs\src\Yandex1-YandexTasks.cmi
+o Yandex1-YandexTasks.cmj : cp ..\bs\rs\src\Yandex1-YandexTasks.cmj
+o Yandex1-YandexTasks.cmt : cp ..\bs\rs\src\Yandex1-YandexTasks.cmt
+o Yandex1.res : cp ..\..\rs\src\Yandex1.res
+o YandexTasks.cmi : cp ..\bs\YandexTasks.cmi
+o YandexTasks.cmj : cp ..\bs\YandexTasks.cmj
+o YandexTasks.cmt : cp ..\bs\YandexTasks.cmt
+build install.stamp : touch Yandex1.test-YandexTasks.cmi Yandex1.test-YandexTasks.cmj Yandex1-YandexTasks.cmi Yandex1-YandexTasks.cmj YandexTasks.cmi YandexTasks.cmj
