@@ -1,0 +1,21 @@
+{
+  "name": "rescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "res:build": "rescript",
+    "res:dev": "rescript build -w",
+    "test": "mocha ./lib/js/test/**/*.js"
+  },
+  "dependencies": {
+    "rescript": "*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rescript-mocha": "^0.9.0",
+    "rescript-nodejs": "^14.3.1"
+  }
+}
