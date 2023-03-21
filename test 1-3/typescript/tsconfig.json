@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "js",
         "rootDir": "ts",
-        "target": "ES5",
+        "target": "ES2016",
         "declaration": true
       },
     "exclude": ["node_modules", "**/*.spec.ts"],

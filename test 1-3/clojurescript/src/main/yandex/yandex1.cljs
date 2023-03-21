@@ -21,4 +21,5 @@
   { :pre [(coll? arr1) (coll? arr2)] }
   (reduce concat
           (counters-to-arr (map #(count-min-in-2-arrs % arr1 arr2)
-                                (distinct (filter #(some (fn [x] (= % x)) arr2) arr1))))))
+                                (distinct (filter #(some (fn [x] (= % x)) 
+                                                         arr2) arr1))))))
