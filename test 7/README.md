@@ -5,6 +5,7 @@
 ## Результаты:
 
 ### Clojure
-0.166ms
+0.166 ms
 
 ### Typescript
+0.083 ms
