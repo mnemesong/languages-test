@@ -6,10 +6,10 @@ const main = () => {
 }
 
 export const groupToRecord =  (arr: string[]): Record<string, string[]> =>
-        arr .map( i => {return {
+        arr .map( i => ({
                 el: i, 
                 g: i.split('').sort().reduce( (str, ch) => str.concat(ch) )
-            }} )
+            }) )
             .reduce( (aggr: Record<string, string[]>, i) => 
                 addElemToPropertyGroup(aggr, i.g, i.el), {})
 
