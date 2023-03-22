@@ -9,3 +9,6 @@
 
 ### Typescript
 0.083 ms
+
+### Rescript
+0.084 ms
