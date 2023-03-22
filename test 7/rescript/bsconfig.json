@@ -1,0 +1,24 @@
+{
+    "name": "AF",
+    "namespace": true,
+    "sources": [
+      {
+        "dir": "src",
+        "subdirs": true
+      },
+      {
+        "dir": "test",
+        "subdirs": true
+      }
+    ],
+    "package-specs": [
+      {
+        "module": "commonjs"
+      }
+    ],
+    "suffix": ".bs.js",
+    "bs-dependencies": [
+      "rescript-mocha",
+      "rescript-nodejs"
+    ]
+  }
