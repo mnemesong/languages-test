@@ -25,5 +25,6 @@ let cacheString = (str: string)
     => str
         ->String2.split("")
         ->Array2.reduce(addToCounter, [])
-        ->Array2.map((el: charCounter) => (el.c > 1) ? (el.ch ++ Int.toString(el.c)): el.ch)
+        ->Array2.map((el: charCounter) 
+            => (el.c > 1) ? (el.ch ++ Int.toString(el.c)) : el.ch)
         ->Array2.reduce((acc: string, el: string) => (acc ++ el), "")

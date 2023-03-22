@@ -9,11 +9,15 @@ const main = () => {
 export const countSame = (arr: number[], el: number): number =>
     arr.filter((k) => (k === el)).length
 
-export const intersectWithReplications = (arr1: number[], arr2: number[]): number[] =>
-    arr1.filter( i => arr2.includes(i) ) //intersect
-        .filter((v, i, arr) => (arr.indexOf(v) === i)) //uniq
-        .map((el) => { return {el: el, c: Math.min(countSame(arr1, el), countSame(arr2, el))} })
-        .map((el) => Array(el.c).fill(el.el))
-        .reduce((acc, cur) => acc.concat(cur))
+export const intersectWithReplications = 
+    (arr1: number[], arr2: number[]): number[] =>
+        arr1.filter( i => arr2.includes(i) ) //intersect
+            .filter((v, i, arr) => (arr.indexOf(v) === i)) //uniq
+            .map((el) => ({
+                el: el, 
+                c: Math.min(countSame(arr1, el), countSame(arr2, el))
+            }))
+            .map((el) => Array(el.c).fill(el.el))
+            .reduce((acc, cur) => acc.concat(cur))
 
 main();
