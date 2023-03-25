@@ -1,6 +1,6 @@
-module Array2 = Js.Array2
 module String2 = Js.String2
 module Option = Js.Option
+module Array = Js.Array
 
 type strMarked = {
     s: string,
@@ -14,30 +14,30 @@ type strMarkedStor = {
 
 let sortStr = (s: string): string
     => s->String2.split("")
-        ->Array2.sortInPlace
-        ->Array2.reduce((acc: string, el) => (acc ++ el), "")
+        |> Array.sortInPlace
+        |> Array.reduce((acc: string, el) => (acc ++ el), "")
 
 let markStr = (str: string): strMarked
     => {{s: str, m: sortStr(str)}}
 
 let findStoreByMark = (arr: array<strMarkedStor>, m: string): option<strMarkedStor>
-    => arr->Array2.find((el) => (el.m == m))
+    => arr |> Array.find((el) => (el.m == m))
 
 let groupMarkedStrs = (acc: array<strMarkedStor>, el: strMarked): array<strMarkedStor>
-    => (acc->Array2.length == 0)
+    => (acc |> Array.length == 0)
         ? [{stor: [el.s], m: el.m}]
         : acc
-            ->Array2.filter((i) => (i.m != el.m))
-            ->Array2.concat((findStoreByMark(acc, el.m)->Js.Option.isNone == true)
+            |> Array.filter((i) => (i.m != el.m))
+            |> Array.concat((findStoreByMark(acc, el.m)->Js.Option.isNone == true)
                 ? [{stor: [el.s], m: el.m}]
                 : [{
                     stor: Option.getExn(findStoreByMark(acc, el.m)).stor
-                        ->Array2.concat([el.s]), 
+                        |> Array.concat([el.s]), 
                     m: el.m
                 }]
             )
 
 let groupStrings = (a: array<string>): array<array<string>>
-    => a->Array2.map(markStr)
-        ->Array2.reduce(groupMarkedStrs, [])
-        ->Array2.map((el) => el.stor)
+    => a|> Array.map(markStr)
+        |> Array.reduce(groupMarkedStrs, [])
+        |> Array.map((el) => el.stor)
