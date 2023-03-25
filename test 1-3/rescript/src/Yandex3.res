@@ -12,7 +12,9 @@ type strMarkedStor = {
     m: string,
 }
 
-let sortStr = (s: string): string
+type stringSorting = (string) => string
+
+let sortStr: stringSorting = (s)
     => s->String2.split("")
         |> Array.sortInPlace
         |> Array.reduce((acc: string, el) => (acc ++ el), "")

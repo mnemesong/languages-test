@@ -5,7 +5,9 @@ const main = () => {
     console.log(splitRecordToArr(groupToRecord(arr)))
 }
 
-export const groupToRecord =  (arr: string[]): Record<string, string[]> =>
+type RegroupStrings = (rec: Record<string, string[]>) => string[][]
+
+export const groupToRecord = (arr: string[]): Record<string, string[]> =>
     arr .map( i => ({
             el: i, 
             g: i.split('').sort().reduce( (str, ch) => str.concat(ch) )
@@ -13,7 +15,8 @@ export const groupToRecord =  (arr: string[]): Record<string, string[]> =>
         .reduce( (aggr: Record<string, string[]>, i) => 
             addElemToPropertyGroup(aggr, i.g, i.el), {})
 
-export const splitRecordToArr =(rec: Record<string, string[]>): string[][] =>
+export const splitRecordToArr: RegroupStrings = 
+    (rec) =>
     Object.keys(rec)
         .map( k => rec[k] )
 

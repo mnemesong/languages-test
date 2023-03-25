@@ -1,13 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var mocha_1 = require("mocha");
-var assert = require("assert");
-var yandex1 = require("../src/yandex1");
-(0, mocha_1.describe)("yandex1 task functions", function () {
-    (0, mocha_1.it)("countSame", function () {
+import { it, describe } from "mocha";
+import * as assert from "assert";
+import * as yandex1 from "../src/yandex1";
+describe("yandex1 task functions", () => {
+    it("countSame", () => {
         assert.equal(3, yandex1.countSame([1, 2, 2, 3, 2], 2));
     });
-    (0, mocha_1.it)("intersectWithReplications", function () {
+    it("intersectWithReplications", () => {
         assert.deepEqual([1, 2, 2, 3], yandex1.intersectWithReplications([1, 2, 3, 2, 2, 0], [5, 1, 2, 7, 3, 2]));
     });
 });
