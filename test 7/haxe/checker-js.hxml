@@ -1,0 +1,7 @@
+--library sure
+--library hxnodejs
+--library equals
+--library random
+--class-path hx
+--main hx.src.Checker
+--js js/src/checker.js

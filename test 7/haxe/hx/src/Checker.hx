@@ -11,7 +11,7 @@ class Checker
             .map( it -> Random.float(-5, 5) );
         var startDate = Date.now();
         var result = range.map(it -> ArcFunc.calc(it));
-        var finishDate = Date.now();
+        var finishDate = ((r) -> Date.now())(result);
         var msDelta = finishDate.getTime() - startDate.getTime();
         Sys.println("Time delta: " + msDelta + " ms");
         Sys.println("Result len " + result.length);
