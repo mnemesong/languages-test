@@ -4,12 +4,14 @@ import haxe.ds.List;
 
 class Yandex1
 {
+    @:pure
     public static function cntr<T>(el: T, arr: Array<T>, offset: Int, c: Int) {
         return (arr.indexOf(el, offset) == -1)
             ? c
             : cntr(el, arr, arr.indexOf(el, offset) + 1, c + 1);
     }
 
+    @:pure
     public static function run(arr1: Array<Int>, arr2: Array<Int>): Array<Int> 
     {
         var arr: Array<Int> = Lambda.fold(arr1, 
