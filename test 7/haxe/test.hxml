@@ -1,6 +1,7 @@
 --library sure
 --library hxnodejs
 --library equals
+--library random
 --class-path hx
 --main hx.test.Run
 --js js/test/run.js

@@ -1,5 +1,6 @@
 --library sure
 --library equals
+--library random
 --class-path hx
 --main hx.src.Checker
 --hl hl/src/run.hl
