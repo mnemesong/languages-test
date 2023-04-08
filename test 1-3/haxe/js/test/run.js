@@ -6,6 +6,16 @@ function $extend(from, fields) {
 	if( fields.toString !== Object.prototype.toString ) proto.toString = fields.toString;
 	return proto;
 }
+var Lambda = function() { };
+Lambda.__name__ = true;
+Lambda.fold = function(it,f,first) {
+	var x = $getIterator(it);
+	while(x.hasNext()) {
+		var x1 = x.next();
+		first = f(x1,first);
+	}
+	return first;
+};
 Math.__name__ = true;
 var Reflect = function() { };
 Reflect.__name__ = true;
@@ -421,50 +431,24 @@ haxe_iterators_ArrayIterator.prototype = {
 };
 var hx_src_Yandex1 = function() { };
 hx_src_Yandex1.__name__ = true;
-hx_src_Yandex1.foldUniq = function(acc,last) {
-	if(last.length > 0) {
-		var firstEl = last[0];
-		var rest = last.slice();
-		rest.shift();
-		if(acc.indexOf(firstEl) == -1) {
-			acc = acc.concat([firstEl]);
-		}
-		return hx_src_Yandex1.foldUniq(acc,rest);
-	} else {
-		return acc;
-	}
-};
-hx_src_Yandex1.counter = function(el,arr,offset,c) {
+hx_src_Yandex1.cntr = function(el,arr,offset,c) {
 	if(arr.indexOf(el,offset) == -1) {
 		return c;
 	} else {
-		return hx_src_Yandex1.counter(el,arr,arr.indexOf(el,offset) + 1,c + 1);
+		return hx_src_Yandex1.cntr(el,arr,arr.indexOf(el,offset) + 1,c + 1);
 	}
 };
-hx_src_Yandex1.arrayFill = function(el,count) {
-	var result = [];
-	var _g = 0;
-	var _g1 = count;
-	while(_g < _g1) {
-		var i = _g++;
-		result.push(el);
-	}
-	return result;
-};
-hx_src_Yandex1.flatmap = function(arr) {
-	var result = [];
-	var _g = 0;
-	while(_g < arr.length) {
-		var i = arr[_g];
-		++_g;
-		result = result.concat(i);
-	}
-	return result;
-};
-hx_src_Yandex1.intersecDublicated = function(arr1,arr2) {
+hx_src_Yandex1.run = function(arr1,arr2) {
+	var arr = Lambda.fold(arr1,function(i,acc) {
+		if(acc.indexOf(i) == -1) {
+			return acc.concat([i]);
+		} else {
+			return acc;
+		}
+	},[]);
 	var _g = [];
 	var _g1 = 0;
-	var _g2 = arr1;
+	var _g2 = arr;
 	while(_g1 < _g2.length) {
 		var v = _g2[_g1];
 		++_g1;
@@ -472,31 +456,57 @@ hx_src_Yandex1.intersecDublicated = function(arr1,arr2) {
 			_g.push(v);
 		}
 	}
-	var unique = hx_src_Yandex1.foldUniq([],_g);
-	var result = new Array(unique.length);
+	var _this = _g;
+	var result = new Array(_this.length);
 	var _g = 0;
-	var _g1 = unique.length;
+	var _g1 = _this.length;
 	while(_g < _g1) {
 		var i = _g++;
-		var it = unique[i];
-		result[i] = { el : it, c : Math.min(hx_src_Yandex1.counter(it,arr1,0,0),hx_src_Yandex1.counter(it,arr2,0,0))};
+		var it = _this[i];
+		result[i] = { el : it, c : Math.min(hx_src_Yandex1.cntr(it,arr1,0,0),hx_src_Yandex1.cntr(it,arr2,0,0))};
 	}
-	var mapped = result;
-	var result = new Array(mapped.length);
+	var _this = result;
+	var result = new Array(_this.length);
 	var _g = 0;
-	var _g1 = mapped.length;
+	var _g1 = _this.length;
 	while(_g < _g1) {
 		var i = _g++;
-		var it = mapped[i];
-		result[i] = hx_src_Yandex1.arrayFill(it.el,js_Boot.__cast(it.c , Int));
+		var it = _this[i];
+		var _g2 = [];
+		var _g3 = 0;
+		var _g4 = js_Boot.__cast(it.c , Int);
+		while(_g3 < _g4) {
+			var i1 = _g3++;
+			_g2.push(i1);
+		}
+		var _this1 = _g2;
+		var result1 = new Array(_this1.length);
+		var _g5 = 0;
+		var _g6 = _this1.length;
+		while(_g5 < _g6) {
+			var i2 = _g5++;
+			result1[i2] = it.el;
+		}
+		result[i] = result1;
 	}
-	var mapped2 = result;
-	return hx_src_Yandex1.flatmap(mapped2);
+	var arr2 = result;
+	var _g = [];
+	var _g_current = 0;
+	var _g_array = arr2;
+	while(_g_current < _g_array.length) {
+		var e = _g_array[_g_current++];
+		var x = $getIterator(e);
+		while(x.hasNext()) {
+			var x1 = x.next();
+			_g.push(x1);
+		}
+	}
+	return _g;
 };
 hx_src_Yandex1.main = function() {
 	var arr1 = [1,2,3,2,2,0];
 	var arr2 = [5,1,2,7,3,2];
-	var v = hx_src_Yandex1.intersecDublicated(arr1,arr2);
+	var v = hx_src_Yandex1.run(arr1,arr2);
 	process.stdout.write(Std.string(v));
 	process.stdout.write("\n");
 };
@@ -507,62 +517,32 @@ hx_test_Run.main = function() {
 };
 var hx_test_Yandex1 = function() { };
 hx_test_Yandex1.__name__ = true;
-hx_test_Yandex1.intersecDublicated = function() {
-	process.stdout.write("Test intersecDublicated");
+hx_test_Yandex1.run = function() {
+	process.stdout.write("Test run");
 	process.stdout.write("\n");
 	var arr1 = [1,2,3,2,2,0];
 	var arr2 = [5,1,2,7,3,2];
-	if(!equals_Equal.equals(hx_src_Yandex1.intersecDublicated(arr1,arr2),[1,2,2,3])) {
-		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.intersecDublicated(arr1, arr2).equals([1, 2, 2, 3])");
+	if(!equals_Equal.equals(hx_src_Yandex1.run(arr1,arr2),[1,2,2,3])) {
+		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.run(arr1, arr2).equals([1, 2, 2, 3])");
 	}
 };
-hx_test_Yandex1.foldUnique = function() {
-	process.stdout.write("Test foldUnique");
+hx_test_Yandex1.cntr = function() {
+	process.stdout.write("Test cntr");
 	process.stdout.write("\n");
-	if(!equals_Equal.equals(hx_src_Yandex1.foldUniq([1,2,3],[1]),[1,2,3])) {
-		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.foldUniq([1, 2, 3], [1]).equals([1, 2, 3])");
-	}
-	if(!equals_Equal.equals(hx_src_Yandex1.foldUniq([1,2,3],[4]),[1,2,3,4])) {
-		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.foldUniq([1, 2, 3], [4]).equals([1, 2, 3, 4])");
-	}
-	if(!equals_Equal.equals(hx_src_Yandex1.foldUniq([1,2,3],[3,2]),[1,2,3])) {
-		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.foldUniq([1, 2, 3], [3, 2]).equals([1, 2, 3])");
-	}
-};
-hx_test_Yandex1.counter = function() {
-	process.stdout.write("Test counter");
-	process.stdout.write("\n");
-	var actual = hx_src_Yandex1.counter(2,[1,2,2,3],0,0);
+	var actual = hx_src_Yandex1.cntr(2,[1,2,2,3],0,0);
 	var expected = 2;
 	if(actual != expected) {
 		throw haxe_Exception.thrown("FAIL: values are not equal (expected: " + expected + ", actual: " + actual + ")");
 	}
-	var actual = hx_src_Yandex1.counter(2,[1,2,2,3,2],3,2);
+	var actual = hx_src_Yandex1.cntr(2,[1,2,2,3,2],3,2);
 	var expected = 3;
 	if(actual != expected) {
 		throw haxe_Exception.thrown("FAIL: values are not equal (expected: " + expected + ", actual: " + actual + ")");
 	}
 };
-hx_test_Yandex1.arrayFill = function() {
-	process.stdout.write("Test arrayFill");
-	process.stdout.write("\n");
-	if(!equals_Equal.equals(hx_src_Yandex1.arrayFill(3,5),[3,3,3,3,3])) {
-		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.arrayFill(3, 5).equals([3, 3, 3, 3, 3])");
-	}
-};
-hx_test_Yandex1.flatmap = function() {
-	process.stdout.write("Flatmap");
-	process.stdout.write("\n");
-	if(!equals_Equal.equals(hx_src_Yandex1.flatmap([[1,2,3],[2,4]]),[1,2,3,2,4])) {
-		throw haxe_Exception.thrown("FAIL: hx.src.Yandex1.flatmap([[1, 2, 3], [2, 4]]).equals([1, 2, 3, 2, 4])");
-	}
-};
 hx_test_Yandex1.runAll = function() {
-	hx_test_Yandex1.foldUnique();
-	hx_test_Yandex1.intersecDublicated();
-	hx_test_Yandex1.counter();
-	hx_test_Yandex1.arrayFill();
-	hx_test_Yandex1.flatmap();
+	hx_test_Yandex1.run();
+	hx_test_Yandex1.cntr();
 };
 var js_Boot = function() { };
 js_Boot.__name__ = true;
@@ -804,6 +784,7 @@ js_node_url_URLSearchParamsEntry.get_name = function(this1) {
 js_node_url_URLSearchParamsEntry.get_value = function(this1) {
 	return this1[1];
 };
+function $getIterator(o) { if( o instanceof Array ) return new haxe_iterators_ArrayIterator(o); else return o.iterator(); }
 if( String.fromCodePoint == null ) String.fromCodePoint = function(c) { return c < 0x10000 ? String.fromCharCode(c) : String.fromCharCode((c>>10)+0xD7C0)+String.fromCharCode((c&0x3FF)+0xDC00); }
 String.prototype.__class__ = String;
 String.__name__ = true;
