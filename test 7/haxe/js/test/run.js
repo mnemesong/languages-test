@@ -424,6 +424,30 @@ hx_src_ArcFunc.__name__ = true;
 hx_src_ArcFunc.calc = function(v) {
 	return 1.0 / (1.0 + Math.exp(-1.0 * v));
 };
+var hx_src_Checker = function() { };
+hx_src_Checker.__name__ = true;
+hx_src_Checker.main = function() {
+	var _g = [];
+	var _g1 = 1;
+	while(_g1 < 1000000) {
+		var i = _g1++;
+		_g.push(i);
+	}
+	var range = _g;
+	var startDate = new Date();
+	var result = new Array(range.length);
+	var _g = 0;
+	var _g1 = range.length;
+	while(_g < _g1) {
+		var i = _g++;
+		result[i] = hx_src_ArcFunc.calc(range[i]);
+	}
+	var result1 = result;
+	var finishDate = new Date();
+	var msDelta = finishDate.getTime() - startDate.getTime();
+	process.stdout.write(Std.string("Time delta: " + msDelta + " ms"));
+	process.stdout.write("\n");
+};
 var hx_test_ArcFunc = function() { };
 hx_test_ArcFunc.__name__ = true;
 hx_test_ArcFunc.calc = function() {
@@ -436,10 +460,21 @@ hx_test_ArcFunc.calc = function() {
 hx_test_ArcFunc.runAll = function() {
 	hx_test_ArcFunc.calc();
 };
+var hx_test_Checker = function() { };
+hx_test_Checker.__name__ = true;
+hx_test_Checker.run = function() {
+	process.stdout.write("Test run");
+	process.stdout.write("\n");
+	hx_src_Checker.main();
+};
+hx_test_Checker.runAll = function() {
+	hx_test_Checker.run();
+};
 var hx_test_Run = function() { };
 hx_test_Run.__name__ = true;
 hx_test_Run.main = function() {
 	hx_test_ArcFunc.runAll();
+	hx_test_Checker.runAll();
 };
 var js_Boot = function() { };
 js_Boot.__name__ = true;

@@ -1,0 +1,5 @@
+--library sure
+--library equals
+--class-path hx
+--main hx.src.Checker
+--hl hl/src/run.hl
