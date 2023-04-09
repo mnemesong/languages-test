@@ -18,3 +18,9 @@
 
 ### Haxe-via-js
 64ms
+
+### Haxe-via-java
+160ms
+
+### Haxe-via-php
+640ms

@@ -1,0 +1,7 @@
+--library sure
+--library equals
+--library random
+--library hxjava
+--class-path hx
+--main hx.src.Checker
+--jvm jvm/src/Checker.jar
