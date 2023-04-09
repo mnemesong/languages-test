@@ -282,7 +282,7 @@ hx_src_Checker.main = function() {
 		result[i] = -5 + 10 * Math.random();
 	}
 	var range = result;
-	var startDate = new Date();
+	var startDate = Date.now() / 1000;
 	var result = new Array(range.length);
 	var _g = 0;
 	var _g1 = range.length;
@@ -294,8 +294,8 @@ hx_src_Checker.main = function() {
 	var resSum = Lambda.fold(result1,function(i,acc) {
 		return acc + i;
 	},0);
-	var finishDate = new Date();
-	var msDelta = finishDate.getTime() - startDate.getTime();
+	var finishDate = Date.now() / 1000;
+	var msDelta = finishDate - startDate;
 	process.stdout.write(Std.string("Time delta: " + msDelta + " ms"));
 	process.stdout.write("\n");
 	var v = "Result len " + result1.length;

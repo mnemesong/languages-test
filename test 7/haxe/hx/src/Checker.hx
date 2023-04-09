@@ -9,11 +9,16 @@ class Checker
     public static function main() {
         var range = [for (i in 1...1000000) i]
             .map( it -> Random.float(-5, 5) );
-        var startDate = Date.now();
+        @:runtimeValue
+        var startDate = Sys.time();
+        @:runtimeValue
         var result = range.map(it -> ArcFunc.calc(it));
+        @:runtimeValue
         var resSum = Lambda.fold(result, (i, acc) -> acc + i, 0);
-        var finishDate = Date.now();
-        var msDelta = finishDate.getTime() - startDate.getTime();
+        @:runtimeValue
+        var finishDate = Sys.time();
+        @:runtimeValue
+        var msDelta = finishDate - startDate;
         Sys.println("Time delta: " + msDelta + " ms");
         Sys.println("Result len " + result.length);
         Sys.println("Result sum " + resSum);

@@ -15,5 +15,6 @@ proc run(): void =
     let endTime = getTime()
     let timeDelta = endTime - startTime
     echo "Time diff: ", timeDelta
+    echo "Sum: ", reduced
 
 run()
