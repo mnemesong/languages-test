@@ -11,6 +11,6 @@ describe("yandex1 task functions", () =>
 
     it("intersectWithReplications", () => 
     {
-        assert.deepEqual([1, 2, 2, 3], yandex1.intersectWithReplications([1, 2, 3, 2, 2, 0], [5, 1, 2, 7, 3, 2]));
+        assert.deepEqual([1, 2, 2, 3], yandex1.intersectRepl([1, 2, 3, 2, 2, 0], [5, 1, 2, 7, 3, 2]));
     })
 });
