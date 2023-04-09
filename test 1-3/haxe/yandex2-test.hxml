@@ -1,0 +1,6 @@
+--library sure
+--library hxnodejs
+--library equals
+--class-path hx
+--main hx.test.Run
+--js js/test/yandex2.js
