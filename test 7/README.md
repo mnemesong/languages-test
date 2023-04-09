@@ -24,3 +24,9 @@
 
 ### Haxe-via-php
 640ms
+
+### Nim-to-C
+125ms
+
+### Nim-to-js
+364ms
