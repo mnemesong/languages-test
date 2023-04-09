@@ -291,6 +291,9 @@ hx_src_Checker.main = function() {
 		result[i] = hx_src_ArcFunc.calc(range[i]);
 	}
 	var result1 = result;
+	var resSum = Lambda.fold(result1,function(i,acc) {
+		return acc + i;
+	},0);
 	var finishDate = new Date();
 	var msDelta = finishDate.getTime() - startDate.getTime();
 	process.stdout.write(Std.string("Time delta: " + msDelta + " ms"));
@@ -298,10 +301,7 @@ hx_src_Checker.main = function() {
 	var v = "Result len " + result1.length;
 	process.stdout.write(Std.string(v));
 	process.stdout.write("\n");
-	var v = "Result sum " + Lambda.fold(result1,function(i,acc) {
-		return acc + i;
-	},0);
-	process.stdout.write(Std.string(v));
+	process.stdout.write(Std.string("Result sum " + resSum));
 	process.stdout.write("\n");
 };
 var js_Boot = function() { };

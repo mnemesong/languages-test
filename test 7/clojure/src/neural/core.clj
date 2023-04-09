@@ -2,10 +2,15 @@
   (:gen-class)
   (:require [neural.node :refer :all]))
 
+(defn init-data []
+  (map #(- (* (rand) 10) 5 (* % 0)) (vec (range 1000000))))
+
 (defn test-performance []
-  (println (System/currentTimeMillis)
-           (reduce + 0 (map #(activ-func %) (vec (range 1000000))))
-           (System/currentTimeMillis)))
+  (def x (init-data))
+  (def start (System/currentTimeMillis))
+  (def res (reduce + 0 (map #(activ-func %) x)))
+  (def end (System/currentTimeMillis))
+  (println (- end start)))
            
 (defn -main
   "I don't do a whole lot ... yet."
