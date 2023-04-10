@@ -1,0 +1,3 @@
+--class-path hx/src
+--main Yandex1Func
+--jvm jvm/src/yandex1-func.jar
