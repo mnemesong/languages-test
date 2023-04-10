@@ -23,12 +23,11 @@ function run(arr1: Array<Int>, arr2: Array<Int>): Array<Int> {
             c: Math.min(cntr(it, arr1, 0, 0), cntr(it, arr2, 0, 0)) 
         } )
         .map( (it) -> [for (i in 0...cast(it.c, Int)) i].map( (i) -> it.el ) );
-    return Lambda.flatten(arra);
+    return new Pipe(arra) >>= Lambda.flatten;
 }
 
 function main() {
     var arr1 = [1, 2, 3, 2, 2, 0];
     var arr2 = [5, 1, 2, 7, 3, 2];
     Sys.println(run(arr1, arr2));
-    Sys.println("HEllo!");
 }

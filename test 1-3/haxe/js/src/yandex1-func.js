@@ -182,18 +182,20 @@ function Yandex1Func_run(arr1,arr2) {
 		result[i] = result1;
 	}
 	var arra = result;
+	var this1 = arra;
 	var _g = [];
-	var _g_current = 0;
-	var _g_array = arra;
-	while(_g_current < _g_array.length) {
-		var e = _g_array[_g_current++];
+	var e_current = 0;
+	var e_array = this1;
+	while(e_current < e_array.length) {
+		var e = e_array[e_current++];
 		var x = $getIterator(e);
 		while(x.hasNext()) {
 			var x1 = x.next();
 			_g.push(x1);
 		}
 	}
-	return _g;
+	var this1 = _g;
+	return this1;
 }
 function Yandex1Func_main() {
 	var arr1 = [1,2,3,2,2,0];
