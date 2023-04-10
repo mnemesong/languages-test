@@ -1,0 +1,4 @@
+--library hxnodejs
+--class-path hx/src
+--main Yandex1Func
+--js js/src/yandex1-func.js
