@@ -203,8 +203,6 @@ function Yandex1Func_main() {
 	var v = Yandex1Func_run(arr1,arr2);
 	process.stdout.write(Std.string(v));
 	process.stdout.write("\n");
-	process.stdout.write("HEllo!");
-	process.stdout.write("\n");
 }
 var haxe_Exception = function(message,previous,native) {
 	Error.call(this,message);

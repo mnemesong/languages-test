@@ -23,7 +23,7 @@ function run(arr1: Array<Int>, arr2: Array<Int>): Array<Int> {
             c: Math.min(cntr(it, arr1, 0, 0), cntr(it, arr2, 0, 0)) 
         } )
         .map( (it) -> [for (i in 0...cast(it.c, Int)) i].map( (i) -> it.el ) );
-    return new Pipe(arra) >>= Lambda.flatten;
+    return new Pipe(arra) => Lambda.flatten;
 }
 
 function main() {
