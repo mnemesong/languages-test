@@ -13,6 +13,9 @@
 ### Rescript
 285 ms
 
+### Racket
+400 ms
+
 ### Haxe-via-hashlink
 1ms
 
