@@ -1,1 +1,0 @@
-let resut = Main.run(NodeTools.ioQuestion, NodeTools.ioOutput)
