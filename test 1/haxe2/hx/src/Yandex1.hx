@@ -9,8 +9,8 @@ class Yandex1 {
 		arr2 : Array<Int>
 	) : Array<Int> {
 		var uniq = arr1.fold(
-			( el, acc : Array<Int> ) -> (
-				arr2.contains( el ) && !acc.contains( el ) ) ? acc.concat( [el] ) : acc,
+			( el, acc : Array<Int> ) ->
+				(arr2.contains( el ) && !acc.contains( el ) ) ? acc.concat( [el] ) : acc,
 			[]
 		);
 		var counters : Array<Array<Int>> = uniq.map( s -> {
